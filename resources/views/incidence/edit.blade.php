@@ -1,0 +1,26 @@
+<x-app-layout>
+  <x-slot name="header">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight"> {{ __('Edit incidence') }} {{$incidence->name}} </h2>
+  </x-slot>
+  <div class="py-12 max-w-8xl mx-auto sm:px-6 lg:px-8"> 
+    {!!Form::model($incidence,['route'=>['incidences.update',$incidence],'method'=>'PUT','id'=>'update_incidence'])!!}
+    <div class="flex flex-col  border-2 rounded p-3 bg-white"> 
+      <div class="font-semibold text-xl tracking-tight border-b">
+        <h3>{{__('Incidences')}} <span class="float-right"><a  href="{{ route('dashboard') }}" class="text-indigo-700"> {{ __('Dashboard') }}</a> > <a  href="{{ route('incidences.index') }}" class="text-indigo-700">{{ __('Incidences') }} </a> > {{ __('Edit incidence') }}</span></h3>
+      </div>
+      <livewire:incidence-form :incidence="$incidence"/>
+      
+    </div>
+    <div class="grid grid-cols-12 border-2 mt-4 rounded bg-white p-2">
+      <div class="col-span-5">
+        <p>&nbsp;</p>
+      </div>
+      <div class="col-span-3">
+        <div> {{Form::button(__('Update'),['type'=>'submit','class'=>'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm','name'=>'btnBrand','id'=>'btnBrand'])}}
+        {!! link_to_route('incidences.index', __('Cancel'),null,['class'=>'bg-gray-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded inline']) !!} </div>
+      </div>
+      <div class="col-span-4"> </div>
+    </div>
+    {!!Form::close()!!} </div>
+    <script type="text/javascript" src="{{ asset('js/incidence.js') }}"></script>
+</x-app-layout>
